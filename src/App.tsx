@@ -1,5 +1,4 @@
 import './App.css';
-import { HoverBorderGradient } from "../components/ui/hover-border-gradient";
 
 interface Topic {
   title: string;
