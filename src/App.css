@@ -1,0 +1,62 @@
+.MyTable {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #255cdd;
+  padding: 8px;
+}
+
+th {
+  background-color: #5087e7;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.justified-text {
+  text-align: justify;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.table-wrapper {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .table-wrapper {
+    padding: 0;
+    overflow-x: scroll;
+  }
+
+  th, td {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  th, td {
+    font-size: 10px;
+  }
+}
