@@ -17,37 +17,35 @@ interface Table {
 function MyTable({ topics }: { topics: Table }) {
   return (
     <div className="MyTable">
-        <table>
-          <thead>
-            <tr>
-              <th>UNIT</th>
-              <th>TOPICS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(topics).map(([unit, data]) => (
-              <tr key={unit}>
+      <table>
+        <thead>
+          <tr>
+            <th>UNIT</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(topics).map(([unit, data]) => (
+            data.topics.map((topic: Topic, index: number) => (
+              <tr key={`${unit}-${index}`}>
                 <td>{unit}</td>
+                <td>{topic.title}</td>
                 <td>
-                  <ul className="justified-text">
-                    {data.topics.map((topic: Topic, index: number) => (
-                      <li key={index}>
-                        <b>{topic.title}: </b>
-                        <a href={topic.link} target="_blank" rel="noopener noreferrer">{topic.description}</a>
-                      </li>
-                    ))}
-                  </ul>
+                  <a href={topic.link} target="_blank" rel="noopener noreferrer">{topic.description}</a>
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            ))
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
+
 export default function MyApp() {
-  const topics: Table = {
+  const pythonSyllabus: Table = {
     1: {
       topics: [
         {
@@ -75,63 +73,86 @@ export default function MyApp() {
     2: {
       topics: [
         {
-          title: "Function",
-          link: "https://example.com/function",
-          description: "Parts of a Function, Execution of a Function, Keyword and Default Arguments, Scope Rules."
+          title: "Functions",
+          link: "https://example.com/functions",
+          description: "Function Definition, Calling Functions, Parameters, Arguments, Return Values."
         },
         {
-          title: "Strings",
-          link: "https://example.com/strings",
-          description: "Length of the string and perform concatenation and Repeat operations, Indexing and Slicing of Strings."
+          title: "Lists and Tuples",
+          link: "https://example.com/lists-tuples",
+          description: "Creating Lists, Indexing and Slicing, List Operations, Tuple Basics."
         },
         {
-          title: "Python Data Structure",
-          link: "https://example.com/python-data-structure",
-          description: "Tuples, Unpacking Sequences, Lists, Mutable Sequences, List Comprehension, Sets, Dictionaries."
+          title: "Dictionaries and Sets",
+          link: "https://example.com/dictionaries-sets",
+          description: "Dictionary Basics, Dictionary Operations, Set Basics, Set Operations."
         },
         {
-          title: "Higher Order Functions",
-          link: "https://example.com/higher-order-functions",
-          description: "Treat functions as first-class Objects, Lambda Expressions."
+          title: "File Handling",
+          link: "https://example.com/file-handling",
+          description: "Opening and Reading Files, Writing to Files, Working with CSV Files."
         }
       ]
     },
     3: {
       topics: [
         {
-          title: "Abstract Data Types",
-          link: "https://example.com/abstract-data-types",
-          description: "Abstract data types and ADT interface in Python Programming."
+          title: "Classes and Objects",
+          link: "https://example.com/classes-objects",
+          description: "Class Definition, Class Objects, Instance Variables, Methods."
         },
         {
-          title: "Classes",
-          link: "https://example.com/classes",
-          description: "Class definition and other operations in the classes, Special Methods (such as _init_, _str_, comparison methods and Arithmetic methods etc.), Class Example, Inheritance, Inheritance and OOP."
+          title: "Inheritance and Polymorphism",
+          link: "https://example.com/inheritance-polymorphism",
+          description: "Inheritance Basics, Method Overriding, Polymorphism."
         },
         {
-          title: "Iterators & Recursion",
-          link: "https://example.com/iterators-recursion",
-          description: "Recursive Fibonacci, Tower of Hanoi."
+          title: "Exception Handling",
+          link: "https://example.com/exception-handling",
+          description: "Handling Exceptions, Try-Except Blocks, Finally Block, Custom Exceptions."
         },
         {
-          title: "Search",
-          link: "https://example.com/search",
-          description: "Simple Search and Estimating Search Time, Binary Search and Estimating Binary Search Time."
-        },
+          title: "Modules and Packages",
+          link: "https://example.com/modules-packages",
+          description: "Module Creation, Importing Modules, Package Basics."
+        }
+      ]
+    }
+  };
+  const DAA_Syllabus: Table = {
+    1: {
+      topics: [
         {
-          title: "Sorting & Merging",
-          link: "https://example.com/sorting-merging",
-          description: "Selection Sort, Merge List, Merge Sort, Higher Order Sort."
-        },
+          title: "Basics of Algorithms",
+          link: "https://example.com/basics-of-algorithms",
+          description: "Analysis Framework: Worst, Average, and Best case analysis. Asymptotic notations: Oh notation, Omega notation, Theta notation. Algorithm performance analysis: Time and Space complexity. Analysis of iterative and recursive algorithms. Recurrence equations and their solution: substitution method & master theorem, recursion tree method."
+        }
+      ]
+    },
+    2: {
+      topics: [
         {
-          title: "File I/O",
-          link: "https://example.com/file-io",
-          description: "File input and output operations in Python Programming Exceptions and Assertions."
-        },
+          title: "Divide and Conquer",
+          link: "https://example.com/divide-and-conquer",
+          description: "Understanding of divide and conquer approach, Algorithms for Find Min and Max, Sorting, Quick Sort, 2 Way Merge Sort, heap sort. Searching: Linear Search and Binary Search. Strassen's matrix multiplication and convex hull. Decrease and Conquer Approach: Topological Sort."
+        }
+      ]
+    },
+    3: {
+      topics: [
         {
-          title: "Modules",
-          link: "https://example.com/modules",
-          description: "Introduction and Importing Modules."
+          title: "Greedy Method and Dynamic Programming",
+          link: "https://example.com/greedy-method-dynamic-programming",
+          description: "Understanding of greedy approach, Greedy algorithms for Knapsack Fractional Problem, Job Sequencing Problem with the deadline, Huffman Coding. Minimum Spanning Tree: Prims and Kruskal Algorithm, Activity Selection problem. Dynamic Programming: Understanding of dynamic programming approach, Algorithms for 0/1 Knapsack problem, Longest Common Subsequence problem, Travelling Salesman Problem. Single Source Shortest Path: BellmanFord Algorithm. All-Pair shortest path problem: Floyd-Warshall algorithm. OBST, Coin change problem, Matrix Chain Multiplication."
+        }
+      ]
+    },
+    4: {
+      topics: [
+        {
+          title: "Advanced data structures and computational complexity",
+          link: "https://example.com/advanced-data-structures-computational-complexity",
+          description: "Understanding of Back Tracking,Recursive Back Tracking, Iterative Back Tracking, N-Queen’s Problem, Hamiltonian Cycle, Knight’s Tour Problem, Lower-Bound Theory, Graph Coloring Problem. Branch & Bound: Understanding of Branch & Bound, FIFO Branch & Bound, Least Cost Branch & Bound, 0/1 Knapsack problem using FIFO Branch & Bound and LC Branch & Bound solution. Computational Complexity: Introduction to P, NP, NP-Hard and NP-Complete; Deterministic & non-deterministic algorithms."
         }
       ]
     }
@@ -139,11 +160,14 @@ export default function MyApp() {
 
   return (
     <div className="app-container">
-      <h1>SYLLABUS</h1>
+
       <div className="w-min m-40 flex justify-center text-center">
-        </div>
+      </div>
       <div className="table-wrapper">
-        <MyTable topics={topics} />
+        <h1>Syllabus for Programming in Python</h1>
+        <MyTable topics={pythonSyllabus} />
+        <h1>Syllabus for Data Structures and Algorithms (DAA)</h1>
+        <MyTable topics={DAA_Syllabus} />
       </div>
     </div>
   );
