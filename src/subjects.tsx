@@ -1,10 +1,10 @@
-interface Subject {
+export interface Subject {
     name: string;
     link: string;
     description: string;
 }
 
-function Subjects(data: Subject[]){
+export function Subjects(data: Subject[]){
     return (
         <div className="MySubjects">
             <ul>
